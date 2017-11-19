@@ -1,0 +1,7 @@
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\bin\Debug\NautoShark.PDFStamper.dll
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\bin\Debug\NautoShark.PDFStamper.pdb
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\bin\Debug\itextsharp.dll
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\bin\Debug\itextsharp.xml
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\obj\Debug\NautoShark.PDFStamper.csproj.CoreCompileInputs.cache
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\obj\Debug\NautoShark.PDFStamper.dll
+C:\Users\Euan\Source\Workspaces\PaperChartCatalog\PaperChartCatalog\NautoShark.PDFStamper\obj\Debug\NautoShark.PDFStamper.pdb
