@@ -5,7 +5,7 @@ Example Usage:
 ```c#
 public static Stream AddUKHOCopyrightBlocks(Stream InputFile)
 {
-    PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
+    PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
     MemoryStream _ms = new MemoryStream();
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceBlocks(_ms);
@@ -14,7 +14,7 @@ public static Stream AddUKHOCopyrightBlocks(Stream InputFile)
 //Suggested topMargin 0 for tracings and 20 for depth tables
 public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin) 
 {
-    PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
+    PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
     MemoryStream _ms = new MemoryStream();
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceTracings(_ms, topMargin);
@@ -22,7 +22,7 @@ public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin)
 
 public static Stream AddVARLicenceWKNM(Stream InputFile)
 {
-    PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
+    PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
     MemoryStream _ms = new MemoryStream();
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceWKNM(_ms);
