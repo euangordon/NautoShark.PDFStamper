@@ -2,6 +2,7 @@ The NautoShark PDFStamper, is intended to be used to update PDF files with Copyr
 It was created as a stand along project to update UKHO Copyright files with the VAR licence for service corrections to vessels using Compass.
 
 Example Usage:
+```c#
 public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin)
 {
     PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
@@ -9,6 +10,7 @@ public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin)
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceTracings(_ms, topMargin);
 }
+```
 
 NautoShark.PDFStamper is licenced as AGPL software.
 
