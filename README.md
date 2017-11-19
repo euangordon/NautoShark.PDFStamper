@@ -3,6 +3,9 @@ It was created as a stand along project to update UKHO Copyright files with the 
 
 Example Usage:
 ```c#
+//AddUKHOCopyrightBlocks can be used for Blocks, Diagrams
+//The Block image is moved to the bottom left corner, to make room in the top right for the copyright information
+//The licence information is stamped under the image layer, so it will never print ontop of the block image
 public static Stream AddUKHOCopyrightBlocks(Stream InputFile)
 {
     PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
@@ -11,6 +14,7 @@ public static Stream AddUKHOCopyrightBlocks(Stream InputFile)
     return ps.AddVARLicenceBlocks(_ms);
 }
 
+//AddUKHOCopyrightTracings can be used for all tracings and depth tables
 //Suggested topMargin 0 for tracings and 20 for depth tables
 public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin) 
 {
@@ -20,12 +24,25 @@ public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin)
     return ps.AddVARLicenceTracings(_ms, topMargin);
 }
 
-public static Stream AddVARLicenceWKNM(Stream InputFile)
+//AddVARLicenceWKNM can be used for the full weekly NTM
+//Only updates page 1
+//Adds the VAR number to the top right
+//Adds the Copyright to bottom left
+public static Stream AddVARCopyrightWKNM(Stream InputFile)
 {
     PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
     MemoryStream _ms = new MemoryStream();
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceWKNM(_ms);
+}
+
+//Used to update publication corrections which have been split into individual PDF pages
+public static Stream AddVARCopyrightPublicationCorrection(Stream InputFile)
+{
+    PDFStamper ps = new PDFStamper("0001/000001/01", "2017");
+    MemoryStream _ms = new MemoryStream();
+    InputFile.CopyTo(_ms);
+    return ps.AddVARLicencePublicationCorrection(_ms);
 }
 ```
 
