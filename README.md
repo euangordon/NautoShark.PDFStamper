@@ -1,14 +1,31 @@
-The NautoShark PDFStamper, is intended to be used to update PDF files with Copyright information. 
+The [NautoShark](http://www.nautoshark.com/) PDFStamper, is intended to be used to update PDF files with Copyright information. 
 It was created as a stand along project to update UKHO Copyright files with the VAR licence for service corrections to vessels using Compass.
 
 Example Usage:
 ```c#
-public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin)
+public static Stream AddUKHOCopyrightBlocks(Stream InputFile)
+{
+    PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
+    MemoryStream _ms = new MemoryStream();
+    InputFile.CopyTo(_ms);
+    return ps.AddVARLicenceBlocks(_ms);
+}
+
+//Suggested topMargin 0 for tracings and 20 for depth tables
+public static Stream AddUKHOCopyrightTracings(Stream InputFile, float topMargin) 
 {
     PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
     MemoryStream _ms = new MemoryStream();
     InputFile.CopyTo(_ms);
     return ps.AddVARLicenceTracings(_ms, topMargin);
+}
+
+public static Stream AddVARLicenceWKNM(Stream InputFile)
+{
+    PDFStamper ps = new PDFStamper(ConfigurationManager.AppSettings["UkhoVARLicenceNumber"], ConfigurationManager.AppSettings["UkhoVARLicenceYear"]);
+    MemoryStream _ms = new MemoryStream();
+    InputFile.CopyTo(_ms);
+    return ps.AddVARLicenceWKNM(_ms);
 }
 ```
 
