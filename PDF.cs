@@ -277,6 +277,27 @@ namespace NautoShark.PDFStamper
             outputStream.Position = 0;
             return outputStream;
         }
+
+        public MemoryStream ImageStripper(MemoryStream inputStream)
+        {
+            var imageStream = new MemoryStream();
+            PdfReader reader = new PdfReader((byte[])inputStream.ToArray());
+
+            //using (Document document = new Document(reader.GetPageSizeWithRotation(1), 0, 0, 0, 0))
+            //{
+                //document.Open();
+                PdfReaderContentParser parser = new PdfReaderContentParser(reader);
+                MyImageRenderListener listener = new MyImageRenderListener();
+                parser.ProcessContent(1, listener);
+                imageStream = new MemoryStream(listener.Image);
+                Console.WriteLine($"Image Type - {listener.ImageType}");
+                Console.WriteLine($"Width in Pixels - {listener.ImageWidthPixels}");
+
+                //document.Close();
+                //}
+
+            return imageStream;
+        }
     }
 }
 

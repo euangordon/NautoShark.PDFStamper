@@ -55,6 +55,28 @@ namespace NautoShark.PDFStamper
             get { return _ylocation; }
         }
 
+        private byte[] _image;
+        public byte[] Image
+        {
+            get { return _image; }
+        }
+
+        private string _imageType;
+        public string ImageType
+        {
+            get { return _imageType; }
+        }
+
+        public float ImageWidthPixels
+        {
+            get
+            {   
+                var widthInches = _ctmWidth / 72;
+                var widthPixels = widthInches * 96;
+                return widthPixels;
+            }
+        }
+
         // ---------------------------------------------------------------------------
         /**
          * Creates a RenderListener that will look for images.
@@ -67,6 +89,7 @@ namespace NautoShark.PDFStamper
             _ctmHeight = new float();
             _xlocation = new float();
             _ylocation = new float();
+            _imageType = "";
         }
         // ---------------------------------------------------------------------------
         /**
@@ -94,10 +117,15 @@ namespace NautoShark.PDFStamper
 
                 //Get the current transformation matrix
                 var ctm = renderInfo.GetImageCTM();
-                _ctmWidth = ctm[Matrix.I12];
-                _ctmHeight = ctm[Matrix.I21];
+                _ctmWidth = ctm[0];
+                _ctmHeight = ctm[4];
                 _xlocation = ctm[Matrix.I31];
                 _ylocation = ctm[Matrix.I32];
+
+                var imageObject = renderInfo.GetImage();
+                _image = imageObject.GetImageAsBytes();
+                _imageType = imageObject.GetFileType();
+
             }
             catch
             {
